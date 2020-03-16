@@ -8,5 +8,14 @@ def index():
     return "<h1>Hello There!</h1>"
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route('/<username>')
+def user(username):
+    return "Hi " + username
+
+
+@app.route('/<username>/<message>')
+def send_message(username, message):
+    return "{0}: {1}".format(username, message)
+
+
+app.run(debug=True)
