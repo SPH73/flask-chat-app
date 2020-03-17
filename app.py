@@ -4,7 +4,7 @@ from flask import Flask, redirect, render_template, request, session, url_for
 
 
 app = Flask(__name__)
-app.secret_key = "randomstring123"
+app.secret_key = os.getenv("SECRET", "randomstring123")
 
 messages = []
 
@@ -40,4 +40,4 @@ def user(username):
                            chat_messages=messages)
 
 
-app.run(debug=True)
+app.run(host="0.0.0.0", port=5000)
